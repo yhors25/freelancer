@@ -1,5 +1,5 @@
 <header>
-  <h1 class="titulo">Juan De la torre <span>Freelancer</span></h1>
+  <h1 class="titulo">{{autor}} <span>Freelancer</span></h1>
 </header>
 
 <div class="nav-bg">
@@ -20,7 +20,7 @@
               <circle cx="12" cy="11" r="3" />
               <path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 0 1 -2.827 0l-4.244-4.243a8 8 0 1 1 11.314 0z" />
           </svg>
-          <p>Guadalajara, Jalisco</p>
+          <p>Medellin, Antioquia</p>
       </div>
       <a class="boton" href="#">Contactar</a>
   </div> <!-- .contenido-hero --> 
@@ -85,35 +85,37 @@
   <section>
       <h2>Contacto</h2>
 
-      <form class="formulario">
+      <form class="formulario" (ngSubmit)="guardarContacto()" [formGroup]="contacto">
           <fieldset>
               <legend>Contactános llenando todos los campos</legend>
 
               <div class="contenedor-campos">
                   <div class="campo">
-                      <label>Nombre</label>
-                      <input class="input-text" type="text" placeholder="Tu Nombre">
+                      <label>Nombre*</label>
+                      <input class="input-text" type="text" placeholder="Tu Nombre" formControlName="nombre">
                   </div>
 
                   <div class="campo">
-                      <label>Teléfono</label>
-                      <input class="input-text" type="tel" placeholder="Tu Teléfono">
+                      <label>Teléfono*</label>
+                      <input class="input-text" type="tel" placeholder="Tu Teléfono" formControlName="telefono">
                   </div>
 
                   <div class="campo">
-                      <label>Correo</label>
-                      <input class="input-text" type="email" placeholder="Tu Email">
+                      <label>Correo*</label>
+                      <input class="input-text" type="email" placeholder="Tu Email" formControlName="correo">
                   </div>
           
                   <div class="campo">
                       <label>Mensaje</label>
-                      <textarea class="input-text"></textarea>
+                      <textarea class="input-text" formControlName="mensaje"></textarea>
                   </div>
               </div> <!-- .contenedor-campos -->
 
               <div class="alinear-derecha flex">
-                  <input class="boton w-sm-100" type="submit" value="Enviar">
+                <!-- <button type="submit" [disabled]="!this.contacto.valid">Enviar</button> -->
+                  <input class="boton w-sm-100" type="submit" value="Enviar" [disabled]="!this.contacto.valid">
               </div>
+              <!-- <p>{{this.contacto.valid}} </p> -->
           </fieldset>
       </form>
   </section>
@@ -121,5 +123,5 @@
 </main>
 
 <footer class="footer">
-  <p>Todos los derechos reservados. Juan De la torre Freelancer</p>
+  <p>Todos los derechos reservados. {{autor}} Freelancer</p>
 </footer>
